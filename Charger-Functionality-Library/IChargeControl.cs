@@ -4,9 +4,13 @@ using System.Text;
 
 namespace Charger_Functionality_Library
 {
-    public class IChargeControl
+    public interface IChargeControl
     {
-        public bool isConnected();
+        public bool IsConnected();
+
+        public void StartCharge();
+
+        public void StopCharge();
 
 
     }
