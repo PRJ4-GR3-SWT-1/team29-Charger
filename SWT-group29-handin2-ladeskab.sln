@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "runnable-console-app", "runnable-console-app\runnable-console-app.csproj", "{51BC88A1-FA70-4EA8-903F-1234332A62AD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CE8FA1F-1AE2-451D-B105-4406B3C9F232} = {7CE8FA1F-1AE2-451D-B105-4406B3C9F232}
+		{81FEBD32-BD20-4092-B11F-3691F23B1552} = {81FEBD32-BD20-4092-B11F-3691F23B1552}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ladeskab-Functionality-Library", "Charger-Functionality-Library\Ladeskab-Functionality-Library.csproj", "{7CE8FA1F-1AE2-451D-B105-4406B3C9F232}"
 EndProject
