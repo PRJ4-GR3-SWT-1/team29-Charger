@@ -17,5 +17,4 @@ namespace Charger_Functionality_Library
             throw new System.NotImplementedException();
         }
     }
-   
 }
