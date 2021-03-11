@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Charger_Functionality_Library.Interfaces
 {
-    interface IDoor
+    public interface IDoor
     {
         bool locked { get; set; }
         void lockDoor();
