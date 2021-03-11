@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Charger_Functionality_Library.Classes
 {
-    class RfidReader
+    class RfidReader: IRFIDReader
     {
     }
 }
