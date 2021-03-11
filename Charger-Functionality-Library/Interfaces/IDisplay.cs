@@ -1,4 +1,4 @@
-﻿namespace Charger_Functionality_Library
+﻿namespace Charger_Functionality_Library.Interfaces
 {
     public interface IDisplay
     {

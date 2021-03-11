@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Charger_Functionality_Library
+namespace Charger_Functionality_Library.Interfaces
 {
     public interface IChargeControl
     {
