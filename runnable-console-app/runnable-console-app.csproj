@@ -10,4 +10,8 @@
     <PackageReference Include="NunitXml.TestLogger" Version="3.0.91" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Charger-Functionality-Library\Ladeskab-Functionality-Library.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
 ﻿using System;
+using Charger_Functionality_Library;
+using Charger_Functionality_Library.Classes;
 
 namespace runnable_console_app
 {
@@ -7,6 +9,8 @@ namespace runnable_console_app
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
+            Door door = new Door(); //Der bruges metoder (open og close) der ikke er en del af interface
+           
 
             bool finish = false;
             do
@@ -23,20 +27,20 @@ namespace runnable_console_app
                         break;
 
                     case 'O':
-                        door.OnDoorOpen();
+                        door.OpenDoor();
                         break;
 
                     case 'C':
-                        door.OnDoorClose();
+                        door.CloseDoor();
                         break;
 
-                    case 'R':
-                        System.Console.WriteLine("Indtast RFID id: ");
-                        string idString = System.Console.ReadLine();
+                    //case 'R':
+                    //    System.Console.WriteLine("Indtast RFID id: ");
+                    //    string idString = System.Console.ReadLine();
 
-                        int id = Convert.ToInt32(idString);
-                        rfidReader.OnRfidRead(id);
-                        break;
+                    //    int id = Convert.ToInt32(idString);
+                    //    rfidReader.OnRfidRead(id);
+                    //    break;
 
                     default:
                         break;
