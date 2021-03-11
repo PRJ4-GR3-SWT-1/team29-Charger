@@ -1,6 +1,4 @@
-﻿using Charger_Functionality_Library.Interfaces;
-
-namespace Charger_Functionality_Library.Classes
+﻿namespace Charger_Functionality_Library
 {
     public class Display : IDisplay
     {
