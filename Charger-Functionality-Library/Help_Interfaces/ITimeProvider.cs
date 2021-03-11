@@ -6,5 +6,6 @@ namespace Charger_Functionality_Library.Help_Interfaces
 {
     interface ITimeProvider
     {
+        public DateTime GetDateTime();
     }
 }
