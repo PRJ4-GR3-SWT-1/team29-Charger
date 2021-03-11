@@ -1,0 +1,105 @@
+actor "Bruger" as Bruger
+participant "<<Boundary>>\n:Door" as Door
+
+participant "<<Boundary>>\n:Display" as Display
+participant "<<Boundary>>\n:ChargeCOntrol" as CC
+participant "<<Boundary>>\n:RFID" as RFID
+participant "<<Controller>>\nStationControl" as sc
+
+participant "<<Boundary>>\n:Log" as log
+
+frame Ladestation
+
+autoactivation 
+
+Bruger->>Door:Åbner døren
+Door->>sc:DoorOpenedEvent
+deactivate Door
+sc->sc:HandleDooropenedEvent
+sc->>Display:ConnectPhone()
+deactivate sc
+Display->>Bruger: "Tilslut Telefon og luk dør"
+
+deactivate Display
+Bruger->>CC: Tilslutter telefon
+deactivate CC
+deactivate Bruger
+Bruger ->>Door: Lukker døren
+Door->>sc: DoorClosedEvent
+deactivate Door
+sc->sc:HandleDoorClosedEvent()
+deactivate sc
+sc->>Display:RFIDRead()
+deactivate sc
+Display->>Bruger:"Indlæs RFID"
+deactivate Display
+loop #green ChargeControl::Connected==false 
+Bruger ->>RFID: Scanner tag
+deactivate Bruger
+RFID->>sc: TagReadEvent
+deactivate RFID
+sc->sc:HandleTagReadEvent
+deactivate sc
+sc->CC:isConnected
+CC-->>sc:false
+sc->>Display:Connectionerror()
+deactivate sc
+Display->>Bruger:"Telefon ikke tilsluttet"
+deactivate Display
+deactivate Bruger
+Display->>Bruger "Telefon ikke tilsluttet"
+
+end 
+activate CC
+activate sc
+
+CC-->>sc:true
+sc->>CC:StartCharge()
+
+sc->>Door:LockDoor()
+
+deactivate Door
+sc->>log: DoorLocked(Id)
+deactivate log
+
+sc->>Display:CabinetOccupied()
+Display->>Bruger:"Ladeskab optaget"
+deactivate Bruger
+deactivate Display
+deactivate sc
+Display->>Bruger "Skabet er optaget"
+
+ref over CC,sc #green :Opladning - Se supplerende diagram.
+
+loop #green CheckId(oldId,Id)==false
+Bruger->>RFID:Scanner tag
+RFID->>sc:TagReadEvent
+deactivate RFID
+sc->sc:HandeTagReadEvent(obj,a)
+deactivate sc
+sc->sc:CheckId(oldId,a.Id)
+deactivate sc
+sc->>Display:RFIDError()
+deactivate sc
+Display->>Bruger:"Forkert RFID Tag"
+deactivate Display
+deactivate Bruger
+
+end 
+activate sc
+
+sc->sc:CheckId(oldId,a.Id)
+deactivate sc
+sc->>CC:StopCharge()
+deactivate CC
+deactivate CC
+sc->>log:DoorUnlocked(Id)
+deactivate log
+sc->>Door:UnlockDoor()
+deactivate Door
+sc->>Display: RemovePhone()
+deactivate sc
+deactivate sc
+Display->>Bruger:"Fjern telefon"
+deactivate Display
+deactivate Bruger
