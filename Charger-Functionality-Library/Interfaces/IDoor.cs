@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Charger_Functionality_Library.EventArgsClasses;
 
 namespace Charger_Functionality_Library.Interfaces
 {
     public interface IDoor
     {
-        bool locked { get; set; }
-        void lockDoor();
-        void unlockDoor();
-        void setState(bool state);
-        void initialise();
+        event EventHandler<DoorEventArgs> DoorOpenEvent;
+        event EventHandler<DoorEventArgs> DoorCloseEvent;
+
+        void LockDoor();
+        void UnlockDoor();
+
     }
 }
