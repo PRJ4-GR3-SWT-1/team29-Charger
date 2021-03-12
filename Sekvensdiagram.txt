@@ -1,12 +1,12 @@
 actor "Bruger" as Bruger
-participant "<<Boundary>>\n:Door" as Door
+participant "<<Boundary>>\n:Door🚪" as Door
 
-participant "<<Boundary>>\n:Display" as Display
-participant "<<Boundary>>\n:ChargeCOntrol" as CC
-participant "<<Boundary>>\n:RFID" as RFID
-participant "<<Controller>>\nStationControl" as sc
-
-participant "<<Boundary>>\n:Log" as log
+participant "<<Boundary>>\n:Display📺" as Display
+participant "<<Boundary>>\n:ChargeCOntrol🔌" as CC
+participant "<<Boundary>>\n:RFID💳" as RFID
+participant #red "<<Controller>>\nStationControl🧠" as sc
+lifelinestyle sc #red
+participant "<<Boundary>>\n:Log📜" as log
 
 frame Ladestation
 
