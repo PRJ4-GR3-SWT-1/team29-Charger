@@ -8,29 +8,29 @@ namespace Charger_Functionality_Library.Classes
 {
     public class Door: IDoor
     {
-        private bool locked = true; 
-        public bool Locked
+        private bool islocked = false; 
+        public bool IsLocked
         {
-            get => locked;
-            set => locked = Locked;
+            get => islocked;
+            set => islocked = value;
         }
 
         public bool open = true;
         public bool Open
         {
             get => open;
-            set => open = Open;
+            set => open = value;
         }
 
         
         public void LockDoor()
         {
-            Locked = true;
+            IsLocked = true;
         }
 
         public void UnlockDoor()
         {
-            Locked = false;
+            IsLocked = false;
         }
         
         
@@ -40,7 +40,7 @@ namespace Charger_Functionality_Library.Classes
         /***************** OPEN DOOR EVENT ******************/
         public void OpenDoor()
         {
-            if (!Locked)
+            if (!IsLocked)
             {
                 Open = true;
                 OnDoorOpen(new DoorEventArgs{});
@@ -56,6 +56,7 @@ namespace Charger_Functionality_Library.Classes
         //**************** CLOSE DOOR EVENT *****************/
         public void CloseDoor()
         {
+            Open = false;
             OnDoorClose(new DoorEventArgs());
         }
 
