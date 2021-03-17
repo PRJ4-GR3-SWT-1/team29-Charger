@@ -10,19 +10,18 @@ namespace Ladeskab_Unit_Test
     public class DisplayUnitTests
     {
         private Display display;
+        private IConsoleWriter _writer;
         [SetUp]
         public void Setup()
         {
-
+            _writer = Substitute.For<IConsoleWriter>();
+            display = new Display(_writer);
         }
 
         // ----- UnitTests for Display -----
         [Test]
         public void Display_MethodIsCalled_DisplayUsesInterface()
         {
-            IConsoleWriter _writer = Substitute.For<IConsoleWriter>();
-            Display display = new Display(_writer);
-
             display.CabinetOccupied();
             display.RFIDError();
             display.ConnectionError();
@@ -35,9 +34,6 @@ namespace Ladeskab_Unit_Test
         [Test]
         public void Display_ChargeControlMethodsIsCalled_DisplayUsesInterface()
         {
-            IConsoleWriter _writer = Substitute.For<IConsoleWriter>();
-            Display display = new Display(_writer);
-
             display.PhoneChargingError();
             display.PhoneIsCharged();
             display.PhoneIsCharging();
