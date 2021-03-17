@@ -22,9 +22,7 @@ namespace Charger_Functionality_Library.Classes
             set => open = Open;
         }
 
-        public event EventHandler<DoorEventArgs> DoorOpenEvent;
-        public event EventHandler<DoorEventArgs> DoorCloseEvent;
-
+        
         public void LockDoor()
         {
             Locked = true;
@@ -34,10 +32,15 @@ namespace Charger_Functionality_Library.Classes
         {
             Locked = false;
         }
+        
+        
+        public event EventHandler<DoorEventArgs> DoorOpenEvent;
+        public event EventHandler<DoorEventArgs> DoorCloseEvent;
 
+        /***************** OPEN DOOR EVENT ******************/
         public void OpenDoor()
         {
-            if (Locked)
+            if (!Locked)
             {
                 Open = true;
                 OnDoorOpen(new DoorEventArgs{});
@@ -49,9 +52,16 @@ namespace Charger_Functionality_Library.Classes
             DoorOpenEvent?.Invoke(this,e);
         }
 
+
+        //**************** CLOSE DOOR EVENT *****************/
         public void CloseDoor()
         {
-            throw new NotImplementedException();
+            OnDoorClose(new DoorEventArgs());
+        }
+
+        protected virtual void OnDoorClose(DoorEventArgs e)
+        {
+            DoorCloseEvent?.Invoke(this,e);
         }
     }
 }
