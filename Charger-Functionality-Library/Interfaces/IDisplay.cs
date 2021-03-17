@@ -8,5 +8,8 @@
         public void CabinetOccupied();
         public void RFIDError();
         public void RemovePhone();
+        public void PhoneIsCharged();
+        public void PhoneIsCharging();
+        public void PhoneChargingError();
     }
 }
