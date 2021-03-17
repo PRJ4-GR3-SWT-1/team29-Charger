@@ -14,4 +14,6 @@ namespace Charger_Functionality_Library.Interfaces
 
 
     }
+
+    
 }
