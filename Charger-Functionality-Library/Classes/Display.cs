@@ -41,5 +41,20 @@ namespace Charger_Functionality_Library.Classes
         {
             Writer.write("Please remove the phone from the cabinet");
         }
+
+        public void PhoneIsCharged()
+        {
+            Writer.write("The phone is fully charged");
+        }
+
+        public void PhoneIsCharging()
+        {
+            Writer.write("The phone is currently charging");
+        }
+
+        public void PhoneChargingError()
+        {
+            Writer.write("Error while charging phone, Charging is stopped");
+        }
     }
 }

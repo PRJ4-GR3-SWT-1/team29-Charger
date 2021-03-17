@@ -32,6 +32,18 @@ namespace Ladeskab_Unit_Test
             _writer.Received(6).write(Arg.Any<string>());
         }
 
+        [Test]
+        public void Display_ChargeControlMethodsIsCalled_DisplayUsesInterface()
+        {
+            IConsoleWriter _writer = Substitute.For<IConsoleWriter>();
+            Display display = new Display(_writer);
+
+            display.PhoneChargingError();
+            display.PhoneIsCharged();
+            display.PhoneIsCharging();
+            _writer.Received(3).write(Arg.Any<string>());
+        }
+
     }
 
 }
