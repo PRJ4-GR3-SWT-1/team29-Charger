@@ -3,6 +3,7 @@ using Charger_Functionality_Library.Interfaces;
 
 namespace Charger_Functionality_Library.Classes
 {
+    
     public class Display : IDisplay
     {
         public void PhoneConnected()
