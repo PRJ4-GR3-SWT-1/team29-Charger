@@ -16,6 +16,8 @@ namespace Charger_Functionality_Library
             door = Do;
             rfidReader = RFID;
             display = Dis;
+            chargeControl = Charge;
+            logFile = log;
         }
         public void DoorOpened()
         {

@@ -1,35 +1,38 @@
-﻿namespace Charger_Functionality_Library
+﻿using System;
+using Charger_Functionality_Library.Interfaces;
+
+namespace Charger_Functionality_Library.Classes
 {
     public class Display : IDisplay
     {
         public void PhoneConnected()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Phone is connected to USBcharger");
         }
 
         public void RFIDRead()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("RFID Tag is read");
         }
 
         public void ConnectionError()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("A phone is not connected");
         }
 
         public void CabinetOccupied()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("The cabinet is currently in use");
         }
 
         public void RFIDError()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Error with reading RFID");
         }
 
         public void RemovePhone()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Please remove the phone from the cabinet");
         }
     }
 }
