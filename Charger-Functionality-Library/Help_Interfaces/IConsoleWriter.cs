@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Charger_Functionality_Library.Help_Interfaces
 {
-    interface IConsoleWriter
+    public interface IConsoleWriter
     {
         public void write(string str);
     }
