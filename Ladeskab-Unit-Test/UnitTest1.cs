@@ -14,6 +14,7 @@ namespace Ladeskab_Unit_Test
             
             door = new Door();
             door.DoorOpenEvent += Door_DoorOpenEvent;
+            door.DoorCloseEvent += Door_DoorCloseEvent;
             numberOfEvents = 0;
         }
 
@@ -21,16 +22,33 @@ namespace Ladeskab_Unit_Test
         {
             numberOfEvents++;
         }
+        private void Door_DoorCloseEvent(object sender, Charger_Functionality_Library.EventArgsClasses.DoorEventArgs e)
+        {
+            numberOfEvents++;
+        }
+
+
 
         public int numberOfEvents { get; set; }
 
+        /****************** TEST OpenDoor ******************/
         [Test]
         public void OpenDoor_DoorIsUnlocked_DoorIsOpen()
         {
             door.UnlockDoor();
             door.OpenDoor();
-            Assert.That(door.open,Is.EqualTo(true));
+            Assert.That(door.Open,Is.EqualTo(true));
         }
+
+        [Test]
+        public void OpenDoor_DoorIsLocked_DoorIsOpen()
+        {
+            door.CloseDoor();
+            door.LockDoor();
+            door.OpenDoor();
+            Assert.That(door.Open,Is.EqualTo(false));
+        }
+
         [Test]
         public void OpenDoor_DoorIsUnlocked_EventIsTriggered()
         {
@@ -38,5 +56,21 @@ namespace Ladeskab_Unit_Test
             door.OpenDoor();
             Assert.That(numberOfEvents, Is.EqualTo(1));
         }
+
+        /****************** TEST CloseDoor ******************/
+        [Test]
+        public void CloseDoor_DoorOpen_ChangeInState()
+        {
+            door.CloseDoor();
+            Assert.That(door.Open,Is.EqualTo(false));
+        }
+
+        [Test]
+        public void CloseDoor_DoorIsOpen_EventIsTriggered()
+        {
+            door.CloseDoor();
+            Assert.That(numberOfEvents,Is.EqualTo(1));
+        }
+
     }
 }
