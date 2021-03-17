@@ -10,8 +10,8 @@ namespace Charger_Functionality_Library.Interfaces
         event EventHandler<DoorEventArgs> DoorOpenEvent;
         event EventHandler<DoorEventArgs> DoorCloseEvent;
 
-        void LockDoor();
-        void UnlockDoor();
+        public void LockDoor();
+        public void UnlockDoor();
 
     }
 }

@@ -1,6 +1,4 @@
-using System.Xml.Linq;
 using Charger_Functionality_Library.Classes;
-using Charger_Functionality_Library.Interfaces;
 using NUnit.Framework;
 
 namespace Ladeskab_Unit_Test

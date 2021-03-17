@@ -6,6 +6,5 @@ namespace Charger_Functionality_Library.EventArgsClasses
 {
     public class DoorEventArgs:EventArgs
     {
-
     }
 }
