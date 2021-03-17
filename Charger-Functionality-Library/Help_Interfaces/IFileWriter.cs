@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Charger_Functionality_Library.Help_Interfaces
 {
-    interface IFileWriter
+    public interface IFileWriter
     {
         string[] File { get; set; }
 

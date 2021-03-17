@@ -6,7 +6,7 @@ using Charger_Functionality_Library.Interfaces;
 
 namespace Charger_Functionality_Library.Classes
 {
-    class LogFile: ILogFile
+    public class LogFile: ILogFile
     {
         public ITimeProvider timestamp;
         public IFileWriter filewriter;
@@ -17,7 +17,7 @@ namespace Charger_Functionality_Library.Classes
             filewriter = fw; 
         }
 
-        public void DoorLockedId(string RFid_num)
+        public void DoorLocked(string RFid_num)
         {
             string log = timestamp.CurrentTime().ToString() + "Door locked with ID: " + RFid_num;
             filewriter.WriteToFile(log);
