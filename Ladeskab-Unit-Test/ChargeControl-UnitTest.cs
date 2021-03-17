@@ -72,13 +72,30 @@ namespace Ladeskab_Unit_Test
        }
 
        //Tilføj en masse fede bounday value test her :D
-       [Test]
-       public void CurrentEvent_4mA_CallsDisplay()
+       [TestCase(1)]
+       [TestCase(5)]
+        public void CurrentEvent_lowAmp_CallsDisplay(double amp)
        {
-           usb.CurrentValueEvent += Raise.EventWith(new object(), new CurrentEventArgs(){Current = 4});
+           usb.CurrentValueEvent += Raise.EventWith(new object(), new CurrentEventArgs(){Current = amp});
            
            display.Received(1).PhoneIsCharged();
        }
 
+        [TestCase(6)]
+        [TestCase(500)]
+        public void CurrentEvent_MediumAmp_CallsDisplay(double amp)
+        {
+            usb.CurrentValueEvent += Raise.EventWith(new object(), new CurrentEventArgs() { Current = amp });
+
+            display.Received(1).PhoneIsCharging();
+        }
+        [TestCase(501)]
+        [TestCase(1500)]
+        public void CurrentEvent_HighAmp_CallsDisplay(double amp)
+        {
+            usb.CurrentValueEvent += Raise.EventWith(new object(), new CurrentEventArgs() { Current = amp });
+
+            display.Received(1).PhoneChargingError();
+        }
     }
 }
