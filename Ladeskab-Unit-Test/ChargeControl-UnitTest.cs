@@ -71,7 +71,7 @@ namespace Ladeskab_Unit_Test
            usb.Received(1).StopCharge();
        }
 
-       //Tilføj en masse fede bounday value test her :D
+       //En masse fede bounday value test  :D
        [TestCase(1)]
        [TestCase(5)]
         public void CurrentEvent_lowAmp_CallsDisplay(double amp)
