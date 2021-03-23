@@ -25,7 +25,7 @@ namespace Ladeskab_Unit_Test
             display.CabinetOccupied();
             display.RFIDError();
             display.ConnectionError();
-            display.PhoneConnected();
+            display.ConnectPhone();
             display.RFIDRead();
             display.RemovePhone();
             _writer.Received(6).write(Arg.Any<string>());

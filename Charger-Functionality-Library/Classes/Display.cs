@@ -12,10 +12,10 @@ namespace Charger_Functionality_Library.Classes
         {
             Writer = writer;
         }
-        public void PhoneConnected()
-        {
-            Writer.write("Phone is connected to USBcharger");
-        }
+        //public void PhoneConnected()
+        //{
+        //    Writer.write("Phone is connected to USBcharger");
+        //}
 
         public void RFIDRead()
         {

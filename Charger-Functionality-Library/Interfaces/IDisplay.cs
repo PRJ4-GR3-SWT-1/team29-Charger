@@ -2,7 +2,7 @@
 {
     public interface IDisplay
     {
-        public void PhoneConnected();
+        //public void PhoneConnected();
         public void RFIDRead();
         public void ConnectionError();
         public void CabinetOccupied();
