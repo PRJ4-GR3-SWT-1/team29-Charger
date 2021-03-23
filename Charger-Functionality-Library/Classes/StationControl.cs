@@ -17,7 +17,8 @@ namespace Charger_Functionality_Library
         {
             Available,
             Locked,
-            DoorOpen
+            DoorOpen,
+            DoorClosed
         };
 
         // Her mangler flere member variable
@@ -42,17 +43,17 @@ namespace Charger_Functionality_Library
         {
             switch (_state)
             {
-                case LadeskabState.Available:
+                case LadeskabState.DoorClosed:
                     // Check for ladeforbindelse
                     if (_chargeControl.IsConnected())
                     {
                         _door.LockDoor();
                         _chargeControl.StartCharge();
                         _oldId = e.Id;
-                        _logFile.DoorLocked(_oldId);
-
-                        _display.PhoneConnected();
+                        
+                        _display.CabinetOccupied();
                         _state = LadeskabState.Locked;
+                        _logFile.DoorLocked(e.Id);
                     }
                     else
                     {
@@ -84,7 +85,8 @@ namespace Charger_Functionality_Library
                     }
                     else
                     {
-                        Console.WriteLine("Forkert RFID tag");
+                        //Console.WriteLine("Forkert RFID tag");
+                        _display.RFIDError();
                     }
 
                     break;
@@ -93,12 +95,14 @@ namespace Charger_Functionality_Library
 
         private void Door_DoorCloseEvent(object sender, EventArgsClasses.DoorEventArgs e)
         {
-            throw new NotImplementedException();
+            _state = LadeskabState.DoorClosed;
+            _display.RFIDRead();
         }
 
         private void Door_DoorOpenEvent(object sender, EventArgsClasses.DoorEventArgs e)
         {
-            throw new NotImplementedException();
+            _state = LadeskabState.DoorOpen;
+            _display.ConnectPhone();
         }
         
     }

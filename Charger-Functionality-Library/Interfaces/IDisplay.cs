@@ -11,5 +11,6 @@
         public void PhoneIsCharged();
         public void PhoneIsCharging();
         public void PhoneChargingError();
+        public void ConnectPhone();
     }
 }

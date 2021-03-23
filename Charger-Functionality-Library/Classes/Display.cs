@@ -56,5 +56,10 @@ namespace Charger_Functionality_Library.Classes
         {
             Writer.write("Error while charging phone, Charging is stopped");
         }
+
+        public void ConnectPhone()
+        {
+            Writer.write("Please Connect Your Phone and close the door");
+        }
     }
 }
