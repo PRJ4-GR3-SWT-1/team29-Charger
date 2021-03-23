@@ -2,11 +2,11 @@ actor "Bruger" as Bruger
 participant "<<Boundary>>\n:Door🚪" as Door
 
 participant "<<Boundary>>\n:Display📺" as Display
-participant "<<Boundary>>\n:ChargeCOntrol🔌" as CC
-participant "<<Boundary>>\n:RFID💳" as RFID
+participant "<<Boundary>>\n:ChargeControl🔌" as CC
+participant "<<Boundary>>\n:RfidReader💳" as RFID
 participant #red "<<Controller>>\nStationControl🧠" as sc
 lifelinestyle sc #red
-participant "<<Boundary>>\n:Log📜" as log
+participant "<<Boundary>>\n:LogFile📜" as log
 
 frame Ladestation
 
@@ -33,7 +33,7 @@ sc->>Display:RFIDRead()
 deactivate sc
 Display->>Bruger:"Indlæs RFID"
 deactivate Display
-loop #green ChargeControl::Connected==false 
+loop #green ChargeControl.IsConnected==false 
 Bruger ->>RFID: Scanner tag
 deactivate Bruger
 RFID->>sc: TagReadEvent
@@ -51,34 +51,36 @@ Display->>Bruger "Telefon ikke tilsluttet"
 
 end 
 activate CC
-activate sc
+
 
 CC-->>sc:true
 sc->>CC:StartCharge()
 
 sc->>Door:LockDoor()
 
+
+
 deactivate Door
 sc->>log: DoorLocked(Id)
 deactivate log
 
 sc->>Display:CabinetOccupied()
+deactivate sc
 Display->>Bruger:"Ladeskab optaget"
 deactivate Bruger
 deactivate Display
-deactivate sc
+
 Display->>Bruger "Skabet er optaget"
 
 ref over CC,sc #green :Opladning - Se supplerende diagram.
 
-loop #green CheckId(oldId,Id)==false
+loop #green oldId!=Id
 Bruger->>RFID:Scanner tag
 RFID->>sc:TagReadEvent
 deactivate RFID
 sc->sc:HandeTagReadEvent(obj,a)
 deactivate sc
-sc->sc:CheckId(oldId,a.Id)
-deactivate sc
+
 sc->>Display:RFIDError()
 deactivate sc
 Display->>Bruger:"Forkert RFID Tag"
@@ -88,15 +90,15 @@ deactivate Bruger
 end 
 activate sc
 
-sc->sc:CheckId(oldId,a.Id)
-deactivate sc
+
 sc->>CC:StopCharge()
 deactivate CC
 deactivate CC
-sc->>log:DoorUnlocked(Id)
-deactivate log
+
 sc->>Door:UnlockDoor()
 deactivate Door
+sc->>log:DoorUnlocked(Id)
+deactivate log
 sc->>Display: RemovePhone()
 deactivate sc
 deactivate sc

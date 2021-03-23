@@ -34,7 +34,7 @@ namespace Ladeskab_Unit_Test
         }
 
 
-
+//RFID event (Lock ladeskab)
         [TestCase("123")]
         [TestCase(null)]
         [TestCase("abcdefg")]
@@ -91,7 +91,7 @@ namespace Ladeskab_Unit_Test
             rfidReader.TagReadEvent += Raise.EventWith(null, new RfidEventArgs() { Id = SimulatedId });
             logFile.Received(1).DoorLocked(SimulatedId);
         }
-//Locked Ladeskab
+//RFID event - unlock ladeskab
         [TestCase("123")]
         [TestCase(null)]
         [TestCase("abcdefg")]
