@@ -183,6 +183,26 @@ namespace Ladeskab_Unit_Test
 
             door.Received(0).LockDoor();
         }
+        [Test]
+        public void RfidEvent_OneCycleCompletedNewStarted_DoorIsLocked()
+        {
+            //First cycle:
+            door.DoorOpenEvent += Raise.EventWith(null, new DoorEventArgs());
+            chargeControl.IsConnected().Returns(true);
+            door.DoorCloseEvent += Raise.EventWith(null, new DoorEventArgs());
+            rfidReader.TagReadEvent += Raise.EventWith(null, new RfidEventArgs() { Id = "123" });
+            rfidReader.TagReadEvent += Raise.EventWith(null, new RfidEventArgs() { Id = "123" });
+            door.DoorOpenEvent += Raise.EventWith(null, new DoorEventArgs());
+            chargeControl.IsConnected().Returns(false);
+            door.DoorCloseEvent += Raise.EventWith(null, new DoorEventArgs());
+            //New cycle:
+            door.DoorOpenEvent += Raise.EventWith(null, new DoorEventArgs());
+            chargeControl.IsConnected().Returns(true);
+            door.DoorCloseEvent += Raise.EventWith(null, new DoorEventArgs());
+            rfidReader.TagReadEvent += Raise.EventWith(null, new RfidEventArgs() { Id = "567" });
+
+            door.Received(2).LockDoor();
+        }
     }
     
 }
