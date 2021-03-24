@@ -8,4 +8,12 @@ namespace Charger_Functionality_Library.Help_Interfaces
     {
         public void write(string str);
     }
+
+    public class ConsoleWriter : IConsoleWriter
+    {
+        public void write(string str)
+        {
+            Console.WriteLine(str);
+        }
+    }
 }

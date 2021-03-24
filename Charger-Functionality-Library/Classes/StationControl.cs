@@ -18,7 +18,6 @@ namespace Charger_Functionality_Library
             Available,
             Locked,
             DoorOpen,
-            DoorClosed
         };
 
         // Her mangler flere member variable
@@ -43,7 +42,7 @@ namespace Charger_Functionality_Library
         {
             switch (_state)
             {
-                case LadeskabState.DoorClosed:
+                case LadeskabState.Available:
                     // Check for ladeforbindelse
                     if (_chargeControl.IsConnected())
                     {
@@ -91,7 +90,7 @@ namespace Charger_Functionality_Library
 
         private void Door_DoorCloseEvent(object sender, EventArgsClasses.DoorEventArgs e)
         {
-            _state = LadeskabState.DoorClosed;
+            _state = LadeskabState.Available;
             _display.RFIDRead();
         }
 

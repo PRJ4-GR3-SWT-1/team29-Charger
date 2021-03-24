@@ -35,22 +35,19 @@ namespace Ladeskab_Unit_Test
             Assert.That(numberOfEvents, Is.EqualTo(1));
         }
         [Test]
-        public void ManualReadTag_EmptyId_IdIsCorrect()
+        public void ManualReadTag_StringId_EventIsTriggered()
         {
-            reader.ManualScanTag("");
-            Assert.That(lastReceivedID, Is.EqualTo(""));
+            reader.ManualScanTag("Dankort:(&%64%¤764373/");
+            Assert.That(numberOfEvents, Is.EqualTo(1));
         }
-        [Test]
-        public void ManualReadTag_IntId_IdIsCorrect()
+        [TestCase("")]
+        [TestCase("123789")]
+        [TestCase("asd-?=(&¤")]
+        public void ManualReadTag_EmptyId_IdIsCorrect(string id)
         {
-            reader.ManualScanTag("132789");
-            Assert.That(lastReceivedID, Is.EqualTo("132789"));
+            reader.ManualScanTag(id);
+            Assert.That(lastReceivedID, Is.EqualTo(id));
         }
-        [Test]
-        public void ManualReadTag_AsciiId_IdIsCorrect()
-        {
-            reader.ManualScanTag("asd-?=(&¤");
-            Assert.That(lastReceivedID, Is.EqualTo("asd-?=(&¤"));
-        }
+       
     }
 }

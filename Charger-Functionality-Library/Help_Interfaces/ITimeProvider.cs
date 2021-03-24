@@ -6,10 +6,15 @@ namespace Charger_Functionality_Library.Help_Interfaces
 {
     public interface ITimeProvider
     {
+        public DateTime CurrentTime();
+    }
+
+    public class TimeProvider : ITimeProvider
+    {
         public DateTime CurrentTime()
         {
-            DateTime test = new DateTime(2000, 01, 01);
-            return test;
+            DateTime now = new DateTime();
+            return now;
         }
     }
 }
