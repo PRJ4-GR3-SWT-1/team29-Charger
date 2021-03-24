@@ -14,7 +14,7 @@ namespace Charger_Functionality_Library.Classes
         }
 
         public bool open = true;
-        public bool Open
+        public bool IsOpen
         {
             get => open;
             set => open = value;
@@ -40,7 +40,7 @@ namespace Charger_Functionality_Library.Classes
         {
             if (!IsLocked)
             {
-                Open = true;
+                IsOpen = true;
                 OnDoorOpen(new DoorEventArgs{});
             }
         }
@@ -54,7 +54,7 @@ namespace Charger_Functionality_Library.Classes
         //**************** CLOSE DOOR EVENT *****************/
         public void CloseDoor()
         {
-            Open = false;
+            IsOpen = false;
             OnDoorClose(new DoorEventArgs());
         }
 

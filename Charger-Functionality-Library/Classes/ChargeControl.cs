@@ -50,6 +50,7 @@ namespace Charger_Functionality_Library.Classes
         {
             isConnected = false;
         }
+
         private bool isConnected=false;
         private IUsbCharger charger;
         private IDisplay display;

@@ -35,7 +35,7 @@ namespace Ladeskab_Unit_Test
         {
             door.UnlockDoor();
             door.OpenDoor();
-            Assert.That(door.Open,Is.EqualTo(true));
+            Assert.That(door.IsOpen,Is.EqualTo(true));
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Ladeskab_Unit_Test
             door.CloseDoor();
             door.LockDoor();
             door.OpenDoor();
-            Assert.That(door.Open,Is.EqualTo(false));
+            Assert.That(door.IsOpen,Is.EqualTo(false));
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace Ladeskab_Unit_Test
         public void CloseDoor_DoorOpen_ChangeInState()
         {
             door.CloseDoor();
-            Assert.That(door.Open,Is.EqualTo(false));
+            Assert.That(door.IsOpen,Is.EqualTo(false));
         }
 
         [Test]

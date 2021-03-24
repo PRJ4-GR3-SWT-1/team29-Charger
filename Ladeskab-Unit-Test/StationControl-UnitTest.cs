@@ -174,7 +174,7 @@ namespace Ladeskab_Unit_Test
             display.Received(1).RFIDRead();
         }
 
-        //Open door - rfid read
+        //IsOpen door - rfid read
         [Test]
         public void RfidEvent_DoorOpen_NothingHappens()
         {
