@@ -28,7 +28,7 @@ namespace UsbSimulator
         {
             CurrentValue = 0.0;
             Connected = true;
-            _overload = false;
+            _overload = true;
 
             _timer = new System.Timers.Timer();
             _timer.Enabled = false;
