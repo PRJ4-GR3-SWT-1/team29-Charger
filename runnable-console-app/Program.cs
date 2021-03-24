@@ -24,6 +24,8 @@ namespace runnable_console_app
             door = new Door();
             
             StationControl station = new StationControl(door, rfidReader, display, chargeControl, logFile);
+            System.Console.WriteLine(
+                "Velkommen til ladeskabet :) Her kan du få frisk strøm, mens din telefon er låst inde\n");
             do
             {
                 string input;
