@@ -13,7 +13,7 @@ namespace Charger_Functionality_Library.Help_Interfaces
     {
         public DateTime CurrentTime()
         {
-            DateTime now = new DateTime();
+            DateTime now = DateTime.Now;
             return now;
         }
     }

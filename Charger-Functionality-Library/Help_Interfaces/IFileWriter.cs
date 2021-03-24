@@ -19,7 +19,7 @@ namespace Charger_Functionality_Library.Help_Interfaces
         {
             using (StreamWriter w = File.AppendText("LadeskabLog.txt"))
             {
-                w.Write(txt);
+                w.Write(txt+"\n");
             }
         }
     }
