@@ -57,7 +57,7 @@ namespace Charger_Functionality_Library
                     }
                     else
                     {
-                        //Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+                        //Display shows connection error
                         _display.ConnectionError();
                     }
 
@@ -73,19 +73,15 @@ namespace Charger_Functionality_Library
                     {
                         _chargeControl.StopCharge();
                         _door.UnlockDoor();
-                        //using (var writer = File.AppendText(_logFile))
-                        //{
-                        //    writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-                        //}
                         _logFile.DoorUnlocked(e.Id);
 
-                       // Console.WriteLine("Tag din telefon ud af skabet og luk døren");
+                       // Display shows remove phone - message
                        _display.RemovePhone();
                         _state = LadeskabState.Available;
                     }
                     else
                     {
-                        //Console.WriteLine("Forkert RFID tag");
+                        //Display shows RFID-Error
                         _display.RFIDError();
                     }
 
