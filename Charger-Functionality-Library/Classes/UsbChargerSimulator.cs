@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Timers;
+using Charger_Functionality_Library.EventArgsClasses;
 using Charger_Functionality_Library.Interfaces;
 
 namespace UsbSimulator
@@ -28,7 +29,7 @@ namespace UsbSimulator
         {
             CurrentValue = 0.0;
             Connected = true;
-            _overload = true;
+            _overload = false;
 
             _timer = new System.Timers.Timer();
             _timer.Enabled = false;

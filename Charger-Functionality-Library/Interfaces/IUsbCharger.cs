@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Charger_Functionality_Library.EventArgsClasses;
 
 namespace Charger_Functionality_Library.Interfaces
 {
-    public class CurrentEventArgs : EventArgs
-    {
-        // Value in mA (milliAmpere)
-        public double Current { set; get; }
-    }
+
 
     public interface IUsbCharger
     {
