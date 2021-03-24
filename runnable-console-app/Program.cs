@@ -9,7 +9,7 @@ namespace runnable_console_app
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
-            Door door = new Door(); //Der bruges metoder (open og close) der ikke er en del af interface
+            Door door = new Door(); //Der bruges metoder (IsOpen og close) der ikke er en del af interface
            
 
             bool finish = false;
