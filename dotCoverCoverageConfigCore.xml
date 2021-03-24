@@ -16,7 +16,7 @@
     <ExcludeFilters>
       <FilterEntry>
         <ModuleMask>nunit.framework</ModuleMask>
-	      <ModuleMask>UsbChargerSimulator.cs</ModuleMask>
+	      <ModuleMask>Charger_Functionality_Library.Help_Interfaces</ModuleMask>
         <ClassMask>*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
