@@ -19,7 +19,7 @@ namespace Charger_Functionality_Library.Classes
 
         public void RFIDRead()
         {
-            Writer.write("RFID Tag is read");
+            Writer.write("Please place your RFID tag in front of the reader");
         }
 
         public void ConnectionError()
